@@ -20,6 +20,7 @@ import { useBlockProps } from "@wordpress/block-editor";
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import "./editor.scss";
+import GetKitty from "./getKitty";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -31,5 +32,6 @@ import "./editor.scss";
  */
 
 export default function Edit() {
-	return <img src="https://cdn2.thecatapi.com/images/a7m.jpg" />;
+	return <GetKitty />;
+	// return <img src="https://cdn2.thecatapi.com/images/a7m.jpg" />;
 }

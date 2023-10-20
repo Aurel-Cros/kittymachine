@@ -17,10 +17,5 @@ import { useBlockProps } from "@wordpress/block-editor";
  */
 
 export default function save() {
-	return (
-		<div style={{ display: "flex", gap: "1rem", flexFlow: "column", alignItems: "center" }}>
-			<button id="refresh">Un autre !</button>
-			<div id="kitty"></div>
-		</div>
-	);
+	return <div id="kitty"></div>;
 }

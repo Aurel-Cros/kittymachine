@@ -20,6 +20,9 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
  */
 
-import getKitty from "./getKitty";
-getKitty();
-document.querySelector("#refresh").addEventListener("click", getKitty);
+import { createRoot } from "react-dom";
+import GetKitty from "./getKitty";
+
+const domElement = document.getElementById("kitty");
+const root = createRoot(domElement);
+root.render(<GetKitty />);
