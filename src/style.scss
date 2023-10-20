@@ -1,0 +1,39 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-kittymachine {
+	background-color: #21759b;
+	color: #fff;
+	padding: 2px;
+}
+
+#kitty img {
+	width: 600px;
+	height: auto;
+}
+
+#refresh {
+	border: transparent;
+	border-radius: 0.5rem;
+	background-color: rgba(250, 250, 250, 0.25);
+	padding: 0.5rem;
+	color: white;
+	font-weight: bold;
+	transition: all 300ms;
+	&:hover {
+		cursor: pointer;
+		background-color: rgba(250, 250, 250, 0.95);
+		color: black;
+		scale: 1.1;
+		letter-spacing: 4px;
+	}
+	&:active {
+		transition: scale 10ms;
+		border: 2px solid black;
+		scale: 0.9;
+	}
+}
