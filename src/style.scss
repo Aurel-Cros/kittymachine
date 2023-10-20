@@ -37,3 +37,6 @@
 		scale: 0.9;
 	}
 }
+img:-moz-loading {
+	visibility: hidden;
+}

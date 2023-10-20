@@ -1,38 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import useFetch from "use-http";
 
 const GetKitty = () => {
-	const [img, setImg] = useState({
-		src: "",
-		alt: "No kitty yet :(",
-		width: 100,
-		height: 100,
-	});
+	const [flag, setFlag] = useState(false);
 
-	const fetchKitty = async () => {
-		setImg(
-			await fetch("https://api.thecatapi.com/v1/images/search")
-				.then(r => r.json())
-				.then(data => {
-					const img = {};
-					img.src = data[0].url;
-					img.alt = `Cat number ${data[0].id}`;
-					img.width = data[0].width;
-					img.height = data[0].height;
-					return img;
-				})
-		);
+	const { loading, error, data = [] } = useFetch(
+		"https://api.thecatapi.com/v1/images/search",
+		{ cachePolicy: "no-cache" },
+		[flag]
+	);
+
+	const trigger = () => {
+		if (!loading) setFlag(a => !a);
 	};
 
-	useEffect(() => {
-		fetchKitty();
-	}, []);
+	const { url, id, width, height } = data.find(() => true) || {};
 
 	return (
 		<div style={{ display: "flex", gap: "1rem", flexFlow: "column", alignItems: "center" }}>
-			<button id="refresh" onClick={fetchKitty}>
+			<button id="refresh" onClick={trigger}>
 				Un autre !
 			</button>
-			<img src={img.src} alt={img.alt} width={img.width} height={img.height} />
+			{loading ? (
+				"Chat-rgement..."
+			) : error ? (
+				"Chat-tastrophe, une erreur : " + error
+			) : (
+				<img src={url} alt={`Cat number ${id}`} width={width} height={height} />
+			)}
 		</div>
 	);
 };
