@@ -12,9 +12,7 @@ A very simple plugin, that will provide you with a custom Gutenberg block. It fe
 
 ### Solution 2 
 1. Download the files and extract it to `/wp-content/plugins/kittymachine` directory
-2. Use a command line in that folder and run `npm install`
-3. When it's done, run `npm run build`
-4. Activate the plugin through the 'Plugins' screen in WordPress
+2. Activate the plugin through the 'Plugins' screen in WordPress
 
 ## Frequently Asked Questions
 
