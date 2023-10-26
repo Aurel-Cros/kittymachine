@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import useFetch from "use-http";
+import useFetchCat from "./customHooks/useFetchCat";
 
 const GetKitty = () => {
 	const [flag, setFlag] = useState(false);
 
-	const { loading, error, data = [] } = useFetch(
+	const { loading, error, data = [] } = useFetchCat(
 		"https://api.thecatapi.com/v1/images/search",
-		{ cachePolicy: "no-cache" },
+		{},
 		[flag]
 	);
 
@@ -16,30 +16,39 @@ const GetKitty = () => {
 
 	useEffect(() => {
 		const refresh = km_options['kittymachine_field_auto_refresh'] === "true" ? true : false;
+		const frequency = Number(km_options['kittymachine_field_auto_refresh_frequency']);
+
 		if (!refresh)
 			return;
-		const frequency = Number(km_options['kittymachine_field_auto_refresh_frequency']);
+
 		const interval = setInterval(() => {
 			trigger();
 		}, frequency * 1000);
 
 		return () => { clearInterval(interval) }
+
 	}, [trigger]);
 
 	const { url, id, width, height } = data.find(() => true) || {};
 
+	const loader = <div className="loader-container"><p>Chat-rgement...</p><div className="loader"></div></div>;
+	const imgEl =
+		<img src={url} alt={`Cat number ${id}`} width={width} height={height} />;
+
 	return (
 		<div style={{ display: "flex", gap: "1rem", flexFlow: "column", alignItems: "center" }}>
-			<button id="refresh" onClick={trigger}>
+			<button id="refresh" onClick={trigger} {...{ disabled: loading ? true : false }}>
 				Un autre !
 			</button>
-			{loading ? (
-				"Chat-rgement..."
-			) : error ? (
-				"Chat-tastrophe, une erreur : " + error
-			) : (
-				<img src={url} alt={`Cat number ${id}`} width={width} height={height} />
-			)}
+			{error ? <>
+				<p>Chat-tastrophe, une erreur :</p>
+				<p>{error}</p>
+			</>
+				: loading ? (
+					loader
+				) : (
+					imgEl
+				)}
 		</div>
 	);
 };

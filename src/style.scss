@@ -14,6 +14,7 @@
 #kitty img {
 	width: 600px;
 	height: auto;
+	color: transparent;
 }
 
 #refresh {
@@ -24,19 +25,67 @@
 	color: white;
 	font-weight: bold;
 	transition: all 300ms;
-	&:hover {
-		cursor: pointer;
-		background-color: rgba(250, 250, 250, 0.95);
-		color: black;
-		scale: 1.1;
-		letter-spacing: 4px;
+
+	&:not(:disabled) {
+		&:hover {
+			cursor: pointer;
+			background-color: rgba(250, 250, 250, 0.95);
+			color: black;
+			scale: 1.1;
+			letter-spacing: 4px;
+		}
+
+		&:active {
+			transition: scale 10ms;
+			border: 2px solid black;
+			scale: 0.9;
+		}
 	}
-	&:active {
-		transition: scale 10ms;
-		border: 2px solid black;
-		scale: 0.9;
+
+	&:disabled {
+		cursor: not-allowed;
+		background-color: rgba(250, 250, 250, 0.55);
+		color: grey;
 	}
 }
-img:-moz-loading {
-	visibility: hidden;
+
+.loader-container {
+	display: grid;
+	place-items: center;
+	width: 100%;
+	margin: 4rem auto;
+	min-width: 24rem;
+	min-height: 4rem;
+
+	p {
+		z-index: 1;
+		font-variant: small-caps;
+		font-weight: 500;
+		font-size: 1.1rem;
+		letter-spacing: 0.25rem;
+		opacity: 0.6;
+	}
+}
+
+.loader {
+	display: block;
+	width: 4rem;
+	height: 4rem;
+	margin: 1rem auto;
+	background-image: url('../assets/paw-icon.svg');
+	background-size: contain;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	animation: loading-rotation 1600ms 400ms ease-in-out infinite;
+}
+
+@keyframes loading-rotation {
+	from {
+		rotate: 0deg;
+	}
+
+	to {
+		rotate: 360deg;
+	}
+
 }
