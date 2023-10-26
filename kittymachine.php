@@ -171,13 +171,23 @@ function kittymachine_field_auto_refresh_frequency_cb($args)
  */
 function kittymachine_options_page()
 {
-	add_menu_page(
+	add_submenu_page(
+		'options-general.php',
 		'Kitty Machine',
 		'Kitty Machine',
 		'manage_options',
 		'kittymachine',
 		'kittymachine_options_page_html'
 	);
+	// add_menu_page(
+	// 	'Kitty Machine',
+	// 	'Kitty Machine',
+	// 	'manage_options',
+	// 	'kittymachine',
+	// 	'kittymachine_options_page_html',
+	// 	'pets',
+	// 	'plugins.php'
+	// );
 }
 
 
