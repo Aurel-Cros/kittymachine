@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useFetch from "use-http";
 
 const GetKitty = () => {
@@ -13,6 +13,18 @@ const GetKitty = () => {
 	const trigger = () => {
 		if (!loading) setFlag(a => !a);
 	};
+
+	useEffect(() => {
+		const refresh = km_options['kittymachine_field_auto_refresh'] === "true" ? true : false;
+		if (!refresh)
+			return;
+		const frequency = Number(km_options['kittymachine_field_auto_refresh_frequency']);
+		const interval = setInterval(() => {
+			trigger();
+		}, frequency * 1000);
+
+		return () => { clearInterval(interval) }
+	}, [trigger]);
 
 	const { url, id, width, height } = data.find(() => true) || {};
 
