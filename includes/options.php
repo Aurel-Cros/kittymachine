@@ -40,7 +40,7 @@ function kittymachine_settings_init()
     add_settings_field(
         'kittymachine_field_auto_refresh_frequency', // As of WP 4.6 this value is used only internally.
         // Use $args' label_for to populate the id inside the callback.
-        __('Automatic refresh frequency', 'kittymachine'),
+        __('Auto-refresh interval in seconds', 'kittymachine'),
         'kittymachine_field_auto_refresh_frequency_cb',
         'kittymachine',
         'kittymachine_section_developers',
@@ -78,7 +78,7 @@ add_action('wp_enqueue_scripts', 'my_enqueue_scripts');
 function kittymachine_section_developers_callback($args)
 {
 ?>
-    <p id="<?php echo esc_attr($args['id']); ?>"><?php esc_html_e('Lets you toggle automatic update and the frequency of those.', 'kittymachine'); ?></p>
+    <p id="<?php echo esc_attr($args['id']); ?>"><?php esc_html_e('Lets you toggle automatic update and at which frequency.', 'kittymachine'); ?></p>
 <?php
 }
 
@@ -139,10 +139,10 @@ function kittymachine_field_auto_refresh_cb($args)
 ?>
     <select id="<?php echo esc_attr($args['label_for']); ?>" data-custom="<?php echo esc_attr($args['kittymachine_custom_data']); ?>" name="kittymachine_options[<?php echo esc_attr($args['label_for']); ?>]">
         <option value="true" <?php echo (selected($value, "true", false)); ?>>
-            <?php esc_html_e('Yes', 'kittymachine'); ?>
+            <?php esc_html_e(__('Yes'), 'kittymachine'); ?>
         </option>
         <option value="false" <?php echo (selected($value, "false", false)); ?>>
-            <?php esc_html_e('No', 'kittymachine'); ?>
+            <?php esc_html_e(__('No'), 'kittymachine'); ?>
         </option>
     </select>
 <?php

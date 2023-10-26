@@ -3,8 +3,6 @@
 /**
  * Plugin Name:       Kitty Machine
  * Description:       The Kitty Machine will grant you much happiness by providing endless furry friends !
- * Requires at least: 6.3.2
- * Requires PHP:      7.0
  * Version:           1.0.0
  * Author:            Aurélien Cros
  * Author URI:        https://aurelien-cros.fr

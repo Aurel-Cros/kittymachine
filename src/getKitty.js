@@ -31,17 +31,17 @@ const GetKitty = () => {
 
 	const { url, id, width, height } = data.find(() => true) || {};
 
-	const loader = <div className="loader-container"><p>Chat-rgement...</p><div className="loader"></div></div>;
+	const loader = <div className="loader-container"><p>Meow-ding...</p><div className="loader"></div></div>;
 	const imgEl =
 		<img src={url} alt={`Cat number ${id}`} width={width} height={height} />;
 
 	return (
 		<div style={{ display: "flex", gap: "1rem", flexFlow: "column", alignItems: "center" }}>
 			<button id="refresh" onClick={trigger} {...{ disabled: loading ? true : false }}>
-				Un autre !
+				Another !
 			</button>
 			{error ? <>
-				<p>Chat-tastrophe, une erreur :</p>
+				<p>Cat-astrophe, an error occured :</p>
 				<p>{error}</p>
 			</>
 				: loading ? (
