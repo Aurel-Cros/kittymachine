@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/kittymachine",
+  "version": "0.1.0",
+  "title": "Kitty Machine",
+  "category": "widgets",
+  "icon": "pets",
+  "description": "The Kitty Machine will grant you much happiness by providing endless furry friends !",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "textdomain": "kittymachine",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
