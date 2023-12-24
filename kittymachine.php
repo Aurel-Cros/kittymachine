@@ -6,6 +6,7 @@
  * Version:           1.0.0
  * Author:            Aurélien Cros
  * Author URI:        https://aurelien-cros.fr
+ * GitHub:            https://github.com/Aurel-Cros/kittymachine
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       kittymachine
